@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 authors = [{ name = "Brandon Sexton", email = "brandon@citra.space" }]
-dependencies = []
+dependencies = ["pydantic", "pydantic-settings", "keplemon"]
 
 [project.optional-dependencies]
 dev = [
@@ -26,9 +26,6 @@ deploy = ["twine"]
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-
-[tool.hatch.build.force-include]
-"docs" = "lemonaid/docs"
 
 [tool.black]
 line-length = 120
