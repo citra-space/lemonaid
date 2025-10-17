@@ -4,7 +4,7 @@ from uuid import UUID
 from keplemon.bodies import Observatory
 from pydantic import field_serializer, field_validator
 
-from lemonaid.schemas._citra_base_model import CitraBaseModel
+from lemonaid.schemas._citra_base_model import CitraBaseModel, CitraBaseModelList
 from lemonaid.schemas.normalization import normalize_datetime, serialize_datetime
 
 
@@ -39,5 +39,5 @@ class GroundStationRead(CitraBaseModel):
         return site
 
 
-class GroundStationReadList(CitraBaseModel):
-    stations: list[GroundStationRead]
+class GroundStationReadList(CitraBaseModelList[GroundStationRead]):
+    pass

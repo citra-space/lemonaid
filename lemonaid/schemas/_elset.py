@@ -6,10 +6,10 @@ from keplemon.elements import KeplerianElements, KeplerianState
 from keplemon.enums import KeplerianType, ReferenceFrame, TimeSystem
 from keplemon.propagation import ForceProperties, b_star_to_drag_coefficient
 from keplemon.time import Epoch
-from pydantic import RootModel, field_serializer, field_validator
+from pydantic import field_serializer, field_validator
 
 from lemonaid.enums import CitraElsetType
-from lemonaid.schemas._citra_base_model import CitraBaseModel
+from lemonaid.schemas._citra_base_model import CitraBaseModel, CitraBaseModelList
 from lemonaid.schemas._satellite_alias import SatelliteAlias
 from lemonaid.schemas.normalization import normalize_datetime, serialize_datetime
 
@@ -95,7 +95,7 @@ class ElsetRead(CitraBaseModel):
         return sat
 
 
-class ElsetReadList(RootModel[list[ElsetRead]]):
+class ElsetReadList(CitraBaseModelList[ElsetRead]):
     def to_keplemon_constellation(self) -> Constellation:
         constellation = Constellation()
         for elset in self.root:
